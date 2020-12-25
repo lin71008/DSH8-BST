@@ -1,0 +1,60 @@
+# main_menu
+- Menu
+- [1] Search product
+- [2] Import product
+- [3] Delete product
+- [4] Export product
+- [5] List in order
+- [6] Modify product information
+- [7] File I/O
+- [q] Quit
+
+# search_menu
+- Search for a product by the product number
+- Read in the product number and show all of the information of the product if the product is found.
+- Press \"N\" key to show the next product information in increasing order of product number, press \"P\" key to show the previous product information in increasing order of product number, press \"R\" key to return.
+
+# import_menu
+- Import product
+- Read in the product number and the amount.
+- If the product exists, the amount of the product is increased. Otherwise, insert the product into the tree.
+
+# delete_menu
+- Delete product
+- Read in the product number and delete the product from the tree if the product is found.
+
+# export_menu
+- Export product
+- Read in the product number and the amount.
+- The amount of the product is decreased if the product is found and the amount is enough.
+- Show error message if the amount is not enough.
+
+# list_menu
+- List all product information in increasing order of product number.
+
+# modify_menu
+- Modify product information
+- Read in product number, the component would to modify and it's new value.
+- If the product exists, modify the product information as given.
+
+# modify_select_menu
+- Modify ... ?
+- [1] Modify product number
+- [2] Modify product price
+- [3] Modify product amount
+- [0] Return to menu
+
+# file_io_menu
+- Import/Export product information from/to file.
+- [1] Import product information from file
+- [2] Export product information to file
+- [0] Return to menu
+
+# import_file_menu
+- Import product information from file.
+
+# export_file_menu
+- Export all product information to file.
+
+# highest_menu
+- The product number with highest price

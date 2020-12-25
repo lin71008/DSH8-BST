@@ -1,0 +1,28 @@
+digraph meow {
+	node [shape=rectangle];
+
+	bst [label="Binary Search Tree"]
+	pdata [label="Product type"]
+	ptree [label="Product tree"]
+	ui [label="UI"]
+	functional [label="functional"]
+	main [label="main"]
+
+	edge [style=solid];
+
+	bst -> ptree
+	pdata -> ptree
+
+	pdata -> functional
+	ptree -> functional
+	ui -> functional
+
+	functional -> main
+
+	{
+		rank=same
+		bst
+		pdata
+		ui
+	}
+}
