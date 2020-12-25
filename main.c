@@ -38,9 +38,13 @@ int main(int argc, char const *argv[])
 		}
 		else if (k == '6')
 		{
-			modify_product(&tree);
+			highest_price_product(&tree);
 		}
 		else if (k == '7')
+		{
+			modify_product(&tree);
+		}
+		else if (k == '8')
 		{
 			file_io(&tree);
 		}

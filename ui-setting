@@ -5,14 +5,15 @@
 - [3] Delete product
 - [4] Export product
 - [5] List in order
-- [6] Modify product information
-- [7] File I/O
+- [6] The highest price product
+- [7] Modify product information
+- [8] File I/O
 - [q] Quit
 
 # search_menu
 - Search for a product by the product number
-- Read in the product number and show all of the information of the product if the product is found.
-- Press \"N\" key to show the next product information in increasing order of product number, press \"P\" key to show the previous product information in increasing order of product number, press \"R\" key to return.
+- Read in the product number and show all information of the product if the product is found.
+- Press N key to show the next product information in increasing order of product number, press P key to show the previous product information in increasing order of product number, press R key to return.
 
 # import_menu
 - Import product
@@ -34,7 +35,7 @@
 
 # modify_menu
 - Modify product information
-- Read in product number, the component would to modify and it's new value.
+- Read in product number, the component would to modified and it's new value.
 - If the product exists, modify the product information as given.
 
 # modify_select_menu
@@ -57,4 +58,4 @@
 - Export all product information to file.
 
 # highest_menu
-- The product number with highest price
+- The product number with the highest price

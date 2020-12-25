@@ -11,19 +11,20 @@ void main_menu(void)
 	printf("[3] Delete product\n");
 	printf("[4] Export product\n");
 	printf("[5] List in order\n");
-	printf("[6] Modify product information\n");
-	printf("[7] File I/O\n");
+	printf("[6] The highest price product\n");
+	printf("[7] Modify product information\n");
+	printf("[8] File I/O\n");
 	printf("[q] Quit\n");
 }
 
 void search_menu(void)
 {
 	printf("=== Search for a product by the product number ===\n");
-	printf("Read in the product number and show all of the information of the product if the\n");
+	printf("Read in the product number and show all information of the product if the\n");
 	printf("product is found.\n");
-	printf("Press \"N\" key to show the next product information in increasing order of\n");
-	printf("product number, press \"P\" key to show the previous product information in\n");
-	printf("increasing order of product number, press \"R\" key to return.\n");
+	printf("Press N key to show the next product information in increasing order of product\n");
+	printf("number, press P key to show the previous product information in increasing order\n");
+	printf("of product number, press R key to return.\n");
 }
 
 void import_menu(void)
@@ -58,7 +59,7 @@ void list_menu(void)
 void modify_menu(void)
 {
 	printf("=== Modify product information ===\n");
-	printf("Read in product number, the component would to modify and it's new value.\n");
+	printf("Read in product number, the component would to modified and it's new value.\n");
 	printf("If the product exists, modify the product information as given.\n");
 }
 
@@ -91,5 +92,5 @@ void export_file_menu(void)
 
 void highest_menu(void)
 {
-	printf("=== The product number with highest price ===\n");
+	printf("=== The product number with the highest price ===\n");
 }

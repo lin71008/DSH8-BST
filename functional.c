@@ -26,7 +26,7 @@ void import_product(node **dest)
 	pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p == NULL)
 	{
-		printf("The product you want to insert is not inthe database.\n");
+		printf("The product you want to insert is not in the database.\n");
 		printf("Please input the price:");
 		scanf("%d", &price);
 		p = pdata_create(id, price, amount);
@@ -166,6 +166,15 @@ void display_product(node **dest)
 	}
 }
 
+void highest_price_product(node **dest)
+{
+	highest_menu();
+	if (1)
+	{
+
+	}
+}
+
 void modify_product(node **dest)
 {
 	modify_menu();
@@ -175,7 +184,7 @@ void modify_product(node **dest)
 	pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p == NULL)
 	{
-		printf("The product you want to modify is not inthe database.\n");
+		printf("The product you want to modify is not in the database.\n");
 	}
 	else
 	{

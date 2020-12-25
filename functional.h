@@ -27,4 +27,7 @@ extern void modify_product(node**);
 // file io
 extern void file_io(node**);
 
+// highest price product
+extern void highest_price_product(node**);
+
 #endif
