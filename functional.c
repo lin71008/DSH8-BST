@@ -9,6 +9,9 @@
 #include "product_list.h"
 #include "ui.h"
 
+#define FILE_IO_FORMAT "%d %d %d\n"
+#define TERMIAL_O_FORMAT "product number: %03d, price: %d, amount: %d\n"
+
 void menu()
 {
 	main_menu();
@@ -18,7 +21,7 @@ void import_product(node **dest)
 {
 	int id, price, amount;
 	import_menu();
-	printf("Product number, Amount: ");
+	printf("\nProduct number, Amount: ");
 	scanf("%d%d", &id, &amount);
 	pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p == NULL)
@@ -45,14 +48,14 @@ void export_product(node **dest)
 {
 	int id, amount;
 	export_menu();
-	printf("Product number, Amount: ");
+	printf("\nProduct number, Amount: ");
 	scanf("%d%d", &id, &amount);
 	pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p != NULL)
 	{
 		if (pdata_get_amount(p) > amount)
 		{
-			printf("=== you have just export ===");
+			printf("=== you have just export ===\n");
 			printf("%s\n", pdata_toString(p));
 			pdata_set_amount(p, pdata_get_amount(p)-amount);
 			printf("=== remains ===\n");
@@ -87,7 +90,7 @@ void delete_product(node **dest)
 {
 	int id;
 	delete_menu();
-	printf("Product number: ");
+	printf("\nProduct number: ");
 	scanf("%d", &id);
 	const pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p != NULL)
@@ -106,7 +109,7 @@ void search_product(node **dest)
 {
 	int id;
 	search_menu();
-	printf("Product number: ");
+	printf("\nProduct number: ");
 	scanf("%d", &id);
 	const pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p != NULL)
@@ -150,14 +153,14 @@ void search_product(node **dest)
 	}
 	else
 	{
-		printf("The producty ou want to search is not exists in database.\n");
+		printf("The product you want to search is not exists in database.\n");
 	}
 }
 
 void display_product(node **dest)
 {
 	list_menu();
-	if (product_tree_display(*dest, stdout) != 0)
+	if (product_tree_display(stdout, TERMIAL_O_FORMAT, *dest) != 0)
 	{
 		printf("The database is empty.\n");
 	}
@@ -167,7 +170,7 @@ void modify_product(node **dest)
 {
 	modify_menu();
 	int id, value;
-	printf("Product number: ");
+	printf("\nProduct number: ");
 	scanf("%d", &id);
 	pdata *p = product_tree_get_pdata_by_key(dest, id);
 	if (p == NULL)
@@ -232,7 +235,7 @@ void file_io(node **dest)
 		{
 			import_file_menu();
 			char file_name[64];
-			printf("File name: ");
+			printf("\nFile name: ");
 			scanf("%s", file_name);
 			FILE *fp = fopen(file_name, "r");
 			if (fp != NULL)
@@ -253,7 +256,7 @@ void file_io(node **dest)
 				while (line_size >= 0)
 				{
 					int id, price, amount;
-					if (sscanf(line_buffer, "product number: %03d, price: %d, amount: %d", &id, &price, &amount) == 3)
+					if (sscanf(line_buffer, FILE_IO_FORMAT, &id, &price, &amount) == 3)
 					{
 						pdata *p = product_tree_get_pdata_by_key(dest, id);
 						if (p == NULL)
@@ -282,12 +285,12 @@ void file_io(node **dest)
 		{
 			export_file_menu();
 			char file_name[64];
-			printf("File name: ");
+			printf("\nFile name: ");
 			scanf("%s", file_name);
 			FILE *fp = fopen(file_name, "w");
 			if (fp != NULL)
 			{
-				product_tree_display(*dest, fp);
+				product_tree_display(fp, FILE_IO_FORMAT, *dest);
 				fclose(fp);
 			}
 		file_io_menu();

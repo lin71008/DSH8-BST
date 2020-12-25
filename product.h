@@ -27,6 +27,6 @@ extern int pdata_cmp(const pdata*, const pdata*);
 extern const char* pdata_toString(const pdata*);
 
 // pdata: display
-extern int pdata_display(const pdata*, FILE*);
+extern int pdata_display(FILE*, const char*, const pdata*);
 
 #endif

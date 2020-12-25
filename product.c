@@ -146,11 +146,11 @@ const char* pdata_toString(const pdata *source)
 	return NULL;
 }
 
-int pdata_display(const pdata *source, FILE *fp)
+int pdata_display(FILE *fp, const char *format, const pdata *source)
 {
-	if (source != NULL && fp != NULL)
+	if (source != NULL && format != NULL && fp != NULL)
 	{
-		fprintf(fp, "product number: %03d, price: %d, amount: %d\n", source->id, source->price, source->amount);
+		fprintf(fp, format, source->id, source->price, source->amount);
 		return 0;
 	}
 	return 1;

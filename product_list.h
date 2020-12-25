@@ -16,7 +16,7 @@ extern pdata* product_tree_node_get_value(const node*);
 extern const char* product_tree_toString(const node**, const char* (*)(const pdata*));
 
 // product_tree: display
-extern int product_tree_display(const node*, FILE*);
+extern int product_tree_display(FILE*, const char*,const node*);
 
 // product_tree: add, remove
 extern int product_tree_add_pdata(node**, pdata*);

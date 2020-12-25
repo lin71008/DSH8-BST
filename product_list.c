@@ -47,17 +47,17 @@ pdata* product_tree_node_get_value(const node *source)
 	}
 }
 
-int product_tree_display (const node *source, FILE *fp)
+int product_tree_display (FILE *fp, const char *format, const node *source)
 {
-	if (source == NULL || fp == NULL)  // Undefined behavior
+	if (source == NULL || format == NULL || fp == NULL)  // Undefined behavior
 	{
 		return -1;
 	}
 	else
 	{
-		product_tree_display(source->left, fp);
-		pdata_display(product_tree_node_get_value(source), fp);
-		product_tree_display(source->right, fp);
+		product_tree_display(fp, format, source->left);
+		pdata_display(fp, format, product_tree_node_get_value(source));
+		product_tree_display(fp, format, source->right);
 		return 0;
 	}
 }
