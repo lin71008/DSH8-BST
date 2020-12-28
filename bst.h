@@ -31,6 +31,9 @@ extern node** tree_get_rightmost_node(node**);
 // tree: search
 extern node** tree_get_node_by_key(node**, const void*, int (*)(const void*, const void*));
 
+// tree: Filted by value filter
+extern int tree_get_node_by_value_filter(node**, node**, int (*)(const void*));
+
 // tree: previous, next
 extern node** tree_get_previous_node_by_key(node**, const void*, int (*)(const void*, const void*));
 extern node** tree_get_next_node_by_key(node**, const void*, int (*)(const void*, const void*));

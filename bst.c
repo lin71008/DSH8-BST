@@ -82,14 +82,14 @@ int tree_delete(node **dest, int (*node_delete)(node**))
 	}
 	if (tree_delete(&((*dest)->left), node_delete) == 0 && tree_delete(&((*dest)->right), node_delete) == 0)
 	{
-		if (node_delete(dest) != 0)  // UnknownError
+		if (node_delete(dest) != 0)  // Unknown Error
 		{
 			return -1;
 		}
 		(*dest) = NULL;
 		return 0;
 	}
-	return -1;  // UnknownError
+	return -1;  // Unknown Error
 }
 
 int tree_add_node(node **dest, void *key, void *val, int (*key_cmp)(const void*, const void*))
@@ -118,7 +118,7 @@ int tree_add_node(node **dest, void *key, void *val, int (*key_cmp)(const void*,
 	}
 	else  // ValueError, the key is already in used
 	{
-		return 1;
+		return -1;
 	}
 }
 
@@ -130,7 +130,7 @@ int tree_remove_root_node(node **dest, int (*node_delete)(node**), int (*key_cmp
 	}
 	if ((*dest) == NULL)  // The tree is empty
 	{
-		return 1;
+		return -1;
 	}
 	if ((*dest)->left != NULL)
 	{
@@ -138,7 +138,7 @@ int tree_remove_root_node(node **dest, int (*node_delete)(node**), int (*key_cmp
 		node* new_dest = (*temp);
 		new_dest->left = (*dest)->left;
 		new_dest->right = (*dest)->right;
-		if (node_delete(dest) != 0)  // UnknownError
+		if (node_delete(dest) != 0)  // Unknown Error
 		{
 			new_dest->left = NULL;
 			new_dest->right = NULL;
@@ -151,7 +151,7 @@ int tree_remove_root_node(node **dest, int (*node_delete)(node**), int (*key_cmp
 	else
 	{
 		node *new_dest = (*dest)->right;
-		if (node_delete(dest) != 0)  // UnknownError
+		if (node_delete(dest) != 0)  // Unknown Error
 		{
 			return -1;
 		}
@@ -168,12 +168,12 @@ int tree_remove_node_by_key(node **dest, const void *key, int (*node_delete)(nod
 	}
 	if ((*dest) == NULL)  // The tree is empty
 	{
-		return 1;
+		return -1;
 	}
 	node **temp = tree_get_node_by_key(dest, key, key_cmp);
 	if (temp == NULL)  // The key is unused
 	{
-		return 1;
+		return -1;
 	}
 	else
 	{
@@ -247,6 +247,78 @@ node** tree_get_node_by_key(node **dest, const void *key, int (*key_cmp)(const v
 	else
 	{
 		return dest;
+	}
+}
+
+int tree_get_node_by_value_filter(node **dest, node **source, int (*value_filter)(const void*))
+{
+	if (source == NULL || dest == NULL)  // Undefined behavior
+	{
+		return -1;
+	}
+	if ((*source) == NULL)  // The tree is empty
+	{
+		return 0;
+	}
+	if ((*dest) != NULL)  // The destination is already in used
+	{
+		return -1;
+	}
+	else
+	{
+		if (value_filter((*source)->value) == 1)
+		{
+			node *n = create_node((*source)->key, (*source)->value);
+			if (n == NULL)  // RuntimeError, can not allocate new node
+			{
+				return -1;
+			}
+			(*dest) = n;
+			int ret = 1;
+			if ((*source)->left != NULL)
+			{
+				ret += tree_get_node_by_value_filter(&((*dest)->left), &((*source)->left), value_filter);
+			}
+			if ((*source)->right != NULL)
+			{
+				ret += tree_get_node_by_value_filter(&((*dest)->right), &((*source)->right), value_filter);
+			}
+			return ret;
+		}
+		else
+		{
+			if ((*source)->left != NULL)
+			{
+				int ret = tree_get_node_by_value_filter(dest, &((*source)->left), value_filter);
+				if ((*dest) != NULL)
+				{
+					node** temp = tree_get_rightmost_node(dest);
+					if ((*temp) != (*dest))
+					{
+						node* new_dest = (*temp);
+						new_dest->left = (*dest);
+						(*dest) = new_dest;
+						(*temp) = NULL;
+						ret += tree_get_node_by_value_filter(&((*dest)->right), &((*source)->right), value_filter);
+						return ret;
+					}
+					else
+					{
+						ret += tree_get_node_by_value_filter(&((*dest)->right), &((*source)->right), value_filter);
+						return ret;
+					}
+				}
+				else
+				{
+					ret += tree_get_node_by_value_filter(dest, &((*source)->right), value_filter);
+					return ret;
+				}
+			}
+			else
+			{
+				return tree_get_node_by_value_filter(dest, &((*source)->right), value_filter);
+			}
+		}
 	}
 }
 

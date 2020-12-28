@@ -137,21 +137,21 @@ int pdata_cmp(const pdata *p1, const pdata *p2)
 
 const char* pdata_toString(const pdata *source)
 {
-	if (source != NULL)
+	if (source == NULL)  // Undefined behavior
 	{
-		char *buffer = (char*) malloc(64*sizeof(char));
-		sprintf(buffer, "product number: %03d, price: %d, amount: %d", source->id, source->price, source->amount);
-		return buffer;
+		return NULL;
 	}
-	return NULL;
+	char *buffer = (char*) malloc(64*sizeof(char));
+	sprintf(buffer, "product number: %03d, price: %d, amount: %d", source->id, source->price, source->amount);
+	return buffer;
 }
 
 int pdata_display(FILE *fp, const char *format, const pdata *source)
 {
-	if (source != NULL && format != NULL && fp != NULL)
+	if (source == NULL || format == NULL || fp == NULL)  // Undefined behavior
 	{
-		fprintf(fp, format, source->id, source->price, source->amount);
-		return 0;
+		return -1;
 	}
-	return 1;
+	fprintf(fp, format, source->id, source->price, source->amount);
+	return 0;
 }

@@ -169,9 +169,14 @@ void display_product(node **dest)
 void highest_price_product(node **dest)
 {
 	highest_menu();
-	if (1)
+	node *temp = product_tree_get_highest_price_node(dest);
+	if (temp != NULL)
 	{
-
+		product_tree_display(stdout, TERMIAL_O_FORMAT, temp);
+	}
+	else
+	{
+		printf("The database is empty.\n");
 	}
 }
 

@@ -53,6 +53,7 @@ Product number:
 輸入想查詢的產品編號(ex:`1`)
 
 如果該產品編號不存在, 輸出錯誤資訊, 按下任意鍵返回
+
 `The product you want to search is not exists in database.`
 
 如果該產品編號存在, 輸出其產品資料(ex: `product number: 001, price: 1, amount: 1`)
@@ -60,6 +61,7 @@ Product number:
 按下'n'鍵, 察看後一編號產品的資訊(ex: `product number: 002, price: 2, amount: 1`)
 
 如果該產品已為最前(後)編號的產品, 輸出錯誤資訊
+
 (ex: `Already at the front of the database.`)
 
 按下'r'鍵, 輸出返回主選單後, 按下任意鍵返回
@@ -77,9 +79,11 @@ Product number, Amount:
 輸入進貨產品的編號與數量(ex:`1 1`)
 
 如果該產品編號不存在, 系統將詢問產品的定價
+
 `The product you want to insert is not inthe database. Please input the price:`
 
 輸入定價後(ex: `10`), 將輸出操作行為, 按下任意鍵返回
+
 ```
 === you have inserted ===
 product number: 001, price: 10, amount: 1
@@ -87,6 +91,7 @@ product number: 001, price: 10, amount: 1
 ```
 
 如果該產品編號存在, 將輸出操作行為, 按下任意鍵返回
+
 ```
 product number: 001, price: 1, amount: 1
 === inserted ===
@@ -105,9 +110,11 @@ Product number:
 輸入廢棄產品的編號(ex: `1`)
 
 如果該產品編號不存在, 輸出錯誤資訊, 按下任意鍵返回
+
 `The product you want to delete is not exists in database.`
 
 如果該產品編號存在, 將輸出操作行為, 按下任意鍵返回
+
 ```
 === you have just deleted===
 product number: 001, price: 1, amount: 1
@@ -127,12 +134,15 @@ Product number, Amount:
 輸入出貨產品的編號與數量(ex:`1 1`)
 
 如果該產品編號不存在, 輸出錯誤資訊, 按下任意鍵返回
+
 `The product you want to export is not exists in database.`
 
 如果該產品編號存在, 但數量不足, 輸出錯誤資訊, 按下任意鍵返回
+
 `The product you want to export is not enough in database.`
 
 如果該產品編號存在, 且數量充足, 將輸出操作行為, 按下任意鍵返回
+
 ```
 === you have just export ===
 product number: 001, price: 1, amount: 1
@@ -146,18 +156,18 @@ product number: 001, price: 1, amount: 1
 ```
 
 輸出目前擁有的產品的清單, 按下任意鍵返回
-(ex:
+
 ```
 product number: 000, price: 1, amount: 1
 product number: 001, price: 1, amount: 1
 product number: 002, price: 1, amount: 1
 ```
-)
-(ex:
+
+如果為空, 輸出目前擁有的產品的清單為空, 按下任意鍵返回
+
 ```
 The database is empty.
 ```
-)
 
 ### 修改資料
 ```
@@ -171,10 +181,12 @@ Product number:
 輸入想要修改產品的編號(ex:`1`)
 
 如果該產品編號不存在, 輸出錯誤資訊, 按下任意鍵返回
+
 `The product you want to modify is not inthe database.`
 
 如果該產品編號存在, 輸出其產品資料(ex: `product number: 001, price: 1, amount: 1`)
 輸出子功能選單, 按下對應的按鍵即可進入對應功能的頁面
+
 ```
 === Modify ... ? ===
 [1] Modify product number
@@ -206,11 +218,18 @@ File name:
 輸入檔案的完整名稱(含附檔名)(ex: `info.txt`)
 
 如果檔案不存在, 輸出錯誤資訊
+
 `Error: file: info.txt did not exist.`
+
+如果檔案為空, 輸出錯誤資訊
+
+`Error: file: info.txt is empty.`
+
 
 如果檔案存在, 系統將匯入檔案內的資料
 
-#### 匯出至檔案
+#### 匯出至檔案(**警告: 會直接複寫檔案**
+)
 ```
 === Export product information to file. ===
 
@@ -218,14 +237,23 @@ File name:
 ```
 
 輸入檔案的完整名稱, 系統將匯出資料至檔案
-**警告: 會直接複寫檔案**
 
 ## 最高價物品
 ```
 === The product number with highest price ===
 ```
 
-還沒做XD
+輸出最高價產品的資訊, 按下任意鍵返回
+
+```
+product number: 000, price: 1, amount: 1
+```
+
+如果為空, 輸出目前擁有的產品的清單為空, 按下任意鍵返回
+
+```
+The database is empty.
+```
 
 ## License
 Copyright (c) 2020 Nick, Lin

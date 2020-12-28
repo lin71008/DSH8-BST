@@ -8,6 +8,9 @@ typedef struct product_type pdata;
 extern node* product_tree_create(void);
 extern int product_tree_delete(node**);
 
+// product_tree: __del__ (only release node structure)
+extern int temp_tree_delete(node**);
+
 // product_tree: node: get
 extern int product_tree_node_get_key(const node*);
 extern pdata* product_tree_node_get_value(const node*);
@@ -30,6 +33,6 @@ extern node** product_tree_get_previous_node_by_key(node**, const int);
 extern node** product_tree_get_next_node_by_key(node**, const int);
 
 // product_tree: highest_price_node
-extern node** product_tree_get_highest_price_node(node**);
+extern node* product_tree_get_highest_price_node(node**);
 
 #endif
